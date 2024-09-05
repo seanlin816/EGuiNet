@@ -1,0 +1,6 @@
+@TurnkeyApi_HostAddress = http://localhost:5032
+
+GET {{TurnkeyApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

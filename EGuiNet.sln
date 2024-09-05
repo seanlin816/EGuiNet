@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Turnkey", "Turnkey", "{94BB995F-109B-4CAF-A987-511BD25B4E78}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EGui", "EGui", "{B667CE8C-5C4D-4A04-83BA-3219E86DD105}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwEInvoice.Domain", "EGui\TwEInvoice.Domain\TwEInvoice.Domain.csproj", "{3F0ECAA6-9498-4C00-84BA-21ED00DA44D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwEInvoice.Application", "EGui\TwEInvoice.Application\TwEInvoice.Application.csproj", "{D0AFADA1-660B-4703-B8C4-44A9F22E5501}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwEInvoice.Infrastructure", "EGui\TwEInvoice.Infrastructure\TwEInvoice.Infrastructure.csproj", "{29C7120A-C5B9-4749-A781-C541847F4338}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurnkeyApi", "Turnkey\TurnkeyApi\TurnkeyApi.csproj", "{335C9643-56EB-450A-9151-2FD7DB765F4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{67DF6A53-0F62-41BB-B48A-E847DB0BEE2D}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwEInvoice.Api", "EGui\TwEInvoice.Api\TwEInvoice.Api.csproj", "{5BBB2B07-283A-484A-92EC-C80D9B2BA3EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F0ECAA6-9498-4C00-84BA-21ED00DA44D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F0ECAA6-9498-4C00-84BA-21ED00DA44D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F0ECAA6-9498-4C00-84BA-21ED00DA44D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F0ECAA6-9498-4C00-84BA-21ED00DA44D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0AFADA1-660B-4703-B8C4-44A9F22E5501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0AFADA1-660B-4703-B8C4-44A9F22E5501}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0AFADA1-660B-4703-B8C4-44A9F22E5501}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0AFADA1-660B-4703-B8C4-44A9F22E5501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29C7120A-C5B9-4749-A781-C541847F4338}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29C7120A-C5B9-4749-A781-C541847F4338}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29C7120A-C5B9-4749-A781-C541847F4338}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29C7120A-C5B9-4749-A781-C541847F4338}.Release|Any CPU.Build.0 = Release|Any CPU
+		{335C9643-56EB-450A-9151-2FD7DB765F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{335C9643-56EB-450A-9151-2FD7DB765F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{335C9643-56EB-450A-9151-2FD7DB765F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{335C9643-56EB-450A-9151-2FD7DB765F4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BBB2B07-283A-484A-92EC-C80D9B2BA3EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BBB2B07-283A-484A-92EC-C80D9B2BA3EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BBB2B07-283A-484A-92EC-C80D9B2BA3EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BBB2B07-283A-484A-92EC-C80D9B2BA3EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3F0ECAA6-9498-4C00-84BA-21ED00DA44D5} = {B667CE8C-5C4D-4A04-83BA-3219E86DD105}
+		{D0AFADA1-660B-4703-B8C4-44A9F22E5501} = {B667CE8C-5C4D-4A04-83BA-3219E86DD105}
+		{29C7120A-C5B9-4749-A781-C541847F4338} = {B667CE8C-5C4D-4A04-83BA-3219E86DD105}
+		{335C9643-56EB-450A-9151-2FD7DB765F4C} = {94BB995F-109B-4CAF-A987-511BD25B4E78}
+		{5BBB2B07-283A-484A-92EC-C80D9B2BA3EA} = {B667CE8C-5C4D-4A04-83BA-3219E86DD105}
+	EndGlobalSection
+EndGlobal

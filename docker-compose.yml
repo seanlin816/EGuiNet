@@ -1,0 +1,12 @@
+﻿services:
+  turnkeyapi:
+    image: turnkeyapi
+    build:
+      context: .
+      dockerfile: Turnkey/TurnkeyApi/Dockerfile
+
+  tweinvoice.api:
+    image: tweinvoice.api
+    build:
+      context: .
+      dockerfile: EGui/TwEInvoice.Api/Dockerfile
