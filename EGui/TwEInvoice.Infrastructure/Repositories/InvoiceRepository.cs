@@ -1,6 +1,10 @@
+using TwEInvoice.Domain.Invoices;
+
 namespace TwEInvoice.Infrastructure.Repositories;
 
-public class InvoiceRepository
+internal sealed  class InvoiceRepository : Repository<TwInvoice>, IInvoiceRepository
 {
-    
+    public InvoiceRepository(TwEInvoiceDbContext dbContext) : base(dbContext)
+    {
+    }
 }

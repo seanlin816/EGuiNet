@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TwEInvoice.Infrastructure;
@@ -11,9 +12,11 @@ using TwEInvoice.Infrastructure;
 namespace TwEInvoice.Infrastructure.Migrations
 {
     [DbContext(typeof(TwEInvoiceDbContext))]
-    partial class TwEInvoiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240905075307_init_with_twinvoice_3")]
+    partial class init_with_twinvoice_3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,10 +108,12 @@ namespace TwEInvoice.Infrastructure.Migrations
                                 .HasColumnName("buyer_address");
 
                             b1.Property<string>("Name")
+                                .IsRequired()
                                 .HasColumnType("text")
                                 .HasColumnName("buyer_name");
 
                             b1.Property<string>("TaxId")
+                                .IsRequired()
                                 .HasColumnType("text")
                                 .HasColumnName("buyer_tax_id");
                         });
@@ -136,6 +141,7 @@ namespace TwEInvoice.Infrastructure.Migrations
                                 .HasColumnName("seller_address");
 
                             b1.Property<string>("Name")
+                                .IsRequired()
                                 .HasColumnType("text")
                                 .HasColumnName("seller_name");
 

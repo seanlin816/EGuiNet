@@ -9,6 +9,7 @@ public class InvoiceBook : Entity
         Ulid id,
         AccountingPeriod accountingPeriod,
         InvoiceTrack track,
+        SellerTaxId sellerTaxId,
         int startNumber,
         int endNumber,
         int currentNumber,
@@ -17,6 +18,7 @@ public class InvoiceBook : Entity
     ) : base(id)
     {
         AccountingPeriod = accountingPeriod;
+        SellerTaxId = sellerTaxId;
         Track = track;
         StartNumber = startNumber;
         EndNumber = endNumber;
@@ -30,12 +32,12 @@ public class InvoiceBook : Entity
     public SellerTaxId SellerTaxId { get; private set; }
     public InvoiceTrack Track { get; private set; }
     public InvoiceBookStatus Status { get; private set; }
-    
+
     public int StartNumber { get; private set; }
     public int EndNumber { get; private set; }
     public int CurrentNumber { get; private set; }
     public int NextNumber { get; private set; }
-    
+
     public Ulid? AllocatedGroupId { get; private set; }
 
     public InvoiceNumber PickANumber()
@@ -43,12 +45,32 @@ public class InvoiceBook : Entity
         var newId = new InvoiceNumber(Track.Value, CurrentNumber);
         CurrentNumber = NextNumber;
         NextNumber++;
+        if (Status == InvoiceBookStatus.New)
+        {
+            Status = InvoiceBookStatus.Open;
+            // TODO: Can Raise Invoice Status Changed event (Should this be in Event Handler?)
+        }
+
+        if (CurrentNumber > EndNumber)
+        {
+            Status = InvoiceBookStatus.Closed;
+            // TODO: Can Raise Invoice Status Changed event (Should this be in Event Handler?)
+        }
         RaiseDomainEvent(new InvoiceNumberPicked(newId));
         return newId;
     }
 
     private InvoiceBook()
     {
+    }
+
+    public void SetStatus(InvoiceBookStatus status)
+    {
+        if (Status != status)
+        {
+            // TODO: Invoice Status Changed Event
+        }
+        Status = status;
     }
 
     public void AllocateToGroup(Ulid groupId)
@@ -65,13 +87,15 @@ public class InvoiceBook : Entity
     )
     {
         return new InvoiceBook(
-            Ulid.NewUlid(), 
-            accountingPeriod, 
-            track, 
-            startNumber, 
-            endNumber, 
-            startNumber,
-            startNumber + 1, 
-            InvoiceBookStatus.New);
+            id: Ulid.NewUlid(),
+            accountingPeriod: accountingPeriod,
+            track: track,
+            startNumber: startNumber,
+            endNumber: endNumber,
+            currentNumber: startNumber,
+            nextNumber: startNumber + 1,
+            status: InvoiceBookStatus.New,
+            sellerTaxId: taxId
+        );
     }
 }

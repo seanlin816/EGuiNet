@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TwEInvoice.Infrastructure;
@@ -11,9 +12,11 @@ using TwEInvoice.Infrastructure;
 namespace TwEInvoice.Infrastructure.Migrations
 {
     [DbContext(typeof(TwEInvoiceDbContext))]
-    partial class TwEInvoiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240905100233_init_with_twinvoice_4")]
+    partial class init_with_twinvoice_4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

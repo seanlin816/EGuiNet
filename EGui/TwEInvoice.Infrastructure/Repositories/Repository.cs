@@ -3,7 +3,7 @@ using TwEInvoice.Domain.Abstractions;
 
 namespace TwEInvoice.Infrastructure.Repositories;
 
-internal abstract class Repository<T> 
+public abstract class Repository<T> 
     where T: Entity
 {
     protected readonly TwEInvoiceDbContext DbContext;

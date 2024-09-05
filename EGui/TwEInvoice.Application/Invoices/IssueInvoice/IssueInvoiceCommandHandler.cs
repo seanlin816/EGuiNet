@@ -36,7 +36,6 @@ internal sealed class IssueInvoiceCommandHandler : ICommandHandler<IssueInvoiceC
         {
             return Result.Failure<IssueInvoiceCommandResult>(Error.None);
         }
-
         var invoiceNumber = invoiceBook.PickANumber();
         _invoiceBookRepository.Update(invoiceBook);
         

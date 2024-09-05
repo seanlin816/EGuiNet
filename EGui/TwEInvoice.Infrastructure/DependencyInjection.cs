@@ -2,6 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TwEInvoice.Domain.Abstractions;
+using TwEInvoice.Domain.Invoices;
+using TwEInvoice.Domain.Invoices.InvoiceNumbers;
+using TwEInvoice.Infrastructure.Repositories;
 
 namespace TwEInvoice.Infrastructure;
 
@@ -27,8 +30,8 @@ public static class DependencyInjection
         });
         
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<TwEInvoiceDbContext>());
-        // services.AddScoped<IProductRepository, ProductRepository>();
-        // services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+        services.AddScoped<IInvoiceBookRepository, InvoiceBookRepository>();
         // services.AddScoped<IDatabaseService, DatabaseService>();
     }
 

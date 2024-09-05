@@ -11,18 +11,20 @@ internal sealed class InvoiceBookRepository : Repository<InvoiceBook>, IInvoiceB
     {
     }
 
-    public async Task<InvoiceBook> GetCurrentOpenBookAsync(string period, string sellerTaxId, Ulid? groupId,
+    public async Task<InvoiceBook> GetCurrentOpenBookAsync(AccountingPeriod period, string sellerTaxId, Ulid? groupId,
         CancellationToken cancellationToken = default)
     {
-        var accPeriod = AccountingPeriod.Parse(period);
-        var books = DbContext.InvoiceBooks.Where(
-            x => x.AccountingPeriod.TwYear == accPeriod.TwYear &&
-                 x.AccountingPeriod.MonthFirst == accPeriod.MonthFirst &&
-                 x.SellerTaxId.Value == sellerTaxId &&
+        // var books = DbContext.InvoiceBooks.AsQueryable().Where(x => x.Status != InvoiceBookStatus.Closed);
+        
+        var books = DbContext.InvoiceBooks.AsQueryable().Where(
+            x => 
+                x.AccountingPeriod.TwYear == period.TwYear &&
+                 x.AccountingPeriod.MonthFirst == period.MonthFirst &&
+                 x.SellerTaxId.Equals(new SellerTaxId(sellerTaxId)) &&
                  x.Status != InvoiceBookStatus.Closed
-                 ).OrderBy(x=>x.StartNumber);
+                 );
         if (groupId.HasValue){
-            books = books.Where(x=>x.AllocatedGroupId != null && x.AllocatedGroupId.Value == groupId.Value).OrderBy(x=>x.StartNumber);
+            books = books.Where(x=>x.AllocatedGroupId != null && x.AllocatedGroupId.Value == groupId.Value);
         }
         var book = books.FirstOrDefault(x => x.Status == InvoiceBookStatus.Open);
         
@@ -43,6 +45,6 @@ internal sealed class InvoiceBookRepository : Repository<InvoiceBook>, IInvoiceB
 
     public void Update(InvoiceBook invoiceBook)
     {
-        throw new NotImplementedException();
+        DbContext.InvoiceBooks.Update(invoiceBook);
     }
 }
