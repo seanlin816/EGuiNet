@@ -1,9 +1,9 @@
+using Innorhino.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TwEInvoice.Domain.Invoices;
-using TwEInvoice.Domain.Invoices.InvoiceNumbers;
 
-namespace Innorhino.Infrastructure.Data.Configurations;
+namespace TwEInvoice.Infrastructure.Data.Configurations;
 
 internal sealed class InvoiceConfiguration : IEntityTypeConfiguration<TwInvoice>
 {
